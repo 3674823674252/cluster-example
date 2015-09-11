@@ -9,7 +9,8 @@ if (cluster.isMaster) {
 
 	cluster.on('exit', function (worker) {
 		console.log('worker: ' + worker.process.pid + ' just died');
-		// cluster.fork(); - let's see if forever does its work
+		console.log('restarting worker');
+		cluster.fork(); //- let's see if forever does its work
 	});
 } else {
 	console.log('cluster worker is running ' + process.pid);
